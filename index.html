@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CITE CONTROL — Safety. Now.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <style>
+    :root {
+      --bg: #000;
+      --card: rgba(20,20,20,0.65);
+      --primary: #FF6200;
+      --primary-glow: #ff3000;
+      --text: #ffffff;
+      --text-soft: #bbbbbb;
+      --glass: rgba(25,25,25,0.5);
+      --blur: blur(16px);
+      --radius: 20px;
+      --border: 1px solid rgba(255,98,0,0.2);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: radial-gradient(circle at top, #181818 0%, #000 55%, #000 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* animated grid background */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,98,0,0.04) 0,
+          rgba(255,98,0,0.04) 1px,
+          transparent 1px,
+          transparent 80px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,98,0,0.04) 0,
+          rgba(255,98,0,0.04) 1px,
+          transparent 1px,
+          transparent 80px
+        );
+      opacity: 0.75;
+      animation: grid-move 22s linear infinite;
+      z-index: -2;
+    }
+
+    .bg-halo {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,98,0,0.45), transparent 60%);
+      filter: blur(22px);
+      top: -120px;
+      right: -40px;
+      opacity: 0.8;
+      mix-blend-mode: screen;
+      animation: halo-pulse 4s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes grid-move {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-80px,-80px); }
+    }
+
+    @keyframes halo-pulse {
+      from { transform: scale(0.95); opacity: 0.7; }
+      to   { transform: scale(1.05); opacity: 1; }
+    }
+
+    /* HERO FIX — spacing + phone positioning */
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;      /* more breathing room */
+      align-items: center;
+      padding: 100px 40px 60px;
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Prevents phone from sliding over the text */
+    .hero-copy {
+      z-index: 3;
+      position: relative;
+      margin-left: 20px; /* pushes text slightly right */
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 4.4vw, 4.8rem);
+      letter-spacing: 0.25em;
+      color: var(--primary);
+      text-transform: uppercase;
+      text-shadow: 0 0 20px var(--primary), 0 0 60px var(--primary-glow);
+      animation: title-glow 2.4s ease-in-out infinite alternate;
+      margin-bottom: 10px;  /* creates space below title */
+    }
+
+    @keyframes title-glow {
+      from { text-shadow: 0 0 24px var(--primary); }
+      to   { text-shadow: 0 0 60px var(--primary-glow), 0 0 90px var(--primary); }
+    }
+
+    .hero-tag {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,98,0,0.4);
+      background: linear-gradient(135deg, rgba(255,98,0,0.15), rgba(0,0,0,0.8));
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #18ff6d;
+      box-shadow: 0 0 12px #18ff6d;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.96); opacity: 0.55; }
+      50% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(0.96); opacity: 0.55; }
+    }
+
+    .hero-copy p {
+      margin-top: 28px;
+      font-size: 1.12rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      max-width: 560px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      font-size: 0.85rem;
+    }
+
+    .hero-badge {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,98,0,0.32);
+      background: rgba(10,10,10,0.9);
+      color: var(--text-soft);
+    }
+
+    .cta-buttons {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .btn {
+      padding: 14px 26px;
+      border-radius: 999px;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.25s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, #ff7a1a, #ff3c00);
+      color: #000;
+      box-shadow: 0 0 26px rgba(255,98,0,0.7);
+    }
+    .btn:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 0 30px rgba(255,98,0,0.9);
+      background-color: var(--primary);
+      color: #000;
+    }
+    .btn.secondary:hover {
+      background: rgba(255,98,0,0.1);
+      color: #fff;
+    }
+
+    .hero-note {
+      margin-top: 14px;
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* phone mockup with screenshot */
+
+    .hero-visual {
+      display: flex;
+      justify-content: flex-start; /* moves phone right slightly */
+      position: relative;
+      margin-left: 40px;
+    }
+
+    .phone-shadow {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,98,0,0.35), transparent 70%);
+      filter: blur(20px);
+      bottom: -40px;
+      z-index: -1;
+    }
+
+    .phone {
+      width: clamp(320px, 90vw, 380px);
+      aspect-ratio: 9 / 18;
+      max-height: 840px;
+      border-radius: 44px;
+      padding: 10px;
+      background: radial-gradient(circle at top, #222 0%, #050505 55%, #000 100%);
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow:
+        0 0 0 1px rgba(255,98,0,0.3),
+        0 0 60px rgba(0,0,0,0.95),
+        0 0 60px rgba(255,98,0,0.4);
+      position: relative;
+      overflow: hidden;
+      transform: rotate(-5deg) translateY(10px);
+    }
+
+    @media (min-width: 1400px) {
+      .hero-visual {
+        margin-left: 80px; /* more space on ultra-wide */
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-visual {
+        justify-content: center;
+        margin-left: 0;
+      }
+      .phone {
+        transform: none;
+        width: clamp(320px, 95vw, 380px);
+      }
+      .phone-shadow {
+        bottom: -60px;
+      }
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      background: #000;
+    }
+
+    .phone-screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.18), transparent 55%),
+        radial-gradient(circle at bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.95));
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .phone-img {
+      position: absolute;
+      inset: 0;
+      background-image: url("assets/cite-control-map.png");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.02);
+      filter: saturate(1.08) contrast(1.05);
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 148px;
+      height: 26px;
+      border-radius: 16px;
+      background: rgba(5,5,5,0.96);
+      z-index: 3;
+      box-shadow: 0 0 12px rgba(0,0,0,0.9);
+    }
+
+    .phone-side-dot {
+      position: absolute;
+      width: 6px;
+      height: 24px;
+      border-radius: 999px;
+      background: #111;
+      top: 110px;
+      left: -3px;
+      box-shadow: inset 0 0 2px #000;
+    }
+
+    /* sections */
+
+    .section {
+      padding: 100px 40px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 2.6rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .section p {
+      color: var(--text-soft);
+      font-size: 1.08rem;
+      max-width: 800px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .features-grid {
+      display: grid;
+      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+
+    .feature-card {
+      background: var(--glass);
+      border: var(--border);
+      padding: 22px 22px 24px;
+      border-radius: 18px;
+      backdrop-filter: var(--blur);
+      box-shadow: 0 0 25px rgba(255,98,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      background:
+        radial-gradient(circle at top left, rgba(255,98,0,0.22), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-card h3 {
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .feature-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 10px;
+    }
+
+    .feature-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    /* testimonials */
+
+    .testimonials {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 26px;
+    }
+
+    .testimonial {
+      padding: 22px;
+      background: rgba(10,10,10,0.9);
+      border-radius: 18px;
+      border: 1px solid rgba(255,98,0,0.25);
+      box-shadow: 0 0 18px rgba(0,0,0,0.9);
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.75);
+      font-style: italic;
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: "“";
+      position: absolute;
+      top: -12px;
+      left: 16px;
+      font-size: 3rem;
+      color: rgba(255,98,0,0.7);
+    }
+
+    /* footer */
+
+    footer {
+      padding: 60px 40px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255,98,0,0.25);
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* header */
+
+    header {
+      padding: 24px 32px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 1rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 600;
+      text-shadow: 0 0 16px rgba(255,98,0,0.9);
+    }
+
+    nav a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 720px) {
+      header { padding-inline: 18px; }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      nav a { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">CITE&nbsp;CONTROL</div>
+  <nav>
+    <a href="index.html" style="color:var(--primary);">Home</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</header>
+
+<div class="bg-grid"></div>
+<div class="bg-halo"></div>
+
+<!-- HERO WITH NEW HEADER + PHONE -->
+<section class="hero">
+  <div class="hero-copy">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      LIVE COMMUNITY SAFETY NETWORK
+    </div>
+
+    <h1>CITE&nbsp;CONTROL</h1>
+
+    <p>
+      Real-time crisis alerts, community verification, and a professional Lookout network —
+      all layered on a live tactical map of your city. Safety isn’t a guess anymore. It’s data.
+    </p>
+
+    <div class="hero-badges">
+      <div class="hero-badge">22 Crisis Types</div>
+      <div class="hero-badge">Verified Alerts</div>
+      <div class="hero-badge">Lookout Sessions</div>
+      <div class="hero-badge">Supabase Real-Time</div>
+    </div>
+
+    <div class="cta-buttons">
+      <a href="#" class="btn primary"><span class="dot"></span> Get iOS TestFlight</a>
+      <a href="#" class="btn secondary">Join Android Beta</a>
+    </div>
+
+    <div class="hero-note">
+      Built for urban operators, event teams, and communities that refuse to be caught off guard.
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-img"></div>
+        <div class="phone-notch"></div>
+        <div class="phone-side-dot"></div>
+      </div>
+    </div>
+    <div class="phone-shadow"></div>
+  </div>
+</section>
+
+<!-- SECTION 1: REAL-TIME INTELLIGENCE -->
+<section class="section">
+  <h2>REAL-TIME CRISIS INTELLIGENCE</h2>
+  <p>
+    CITE CONTROL fuses live mapping, crisis-specific radius logic, and community verification into a single interface.
+    Every alert is placed, timed, and visually ranked so you know exactly what matters — and how close it really is.
+  </p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-tag"><span class="feature-dot"></span>Alerts</div>
+      <h3>Instant Crisis Reporting</h3>
+      <p>Trigger PROLONGED or IMMEDIATE alerts in a single press with smart radius, timers, and Apple-level visual polish.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag"><span class="feature-dot"></span>Verification</div>
+      <h3>Community-Verified Reality</h3>
+      <p>Duplicate detection, 3+ confirmations for VERIFIED status, and a 60-minute lifeline that extends whenever the crowd confirms.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag"><span class="feature-dot"></span>Lookouts</div>
+      <h3>Professional Watchstanders</h3>
+      <p>Book vetted Lookouts to monitor areas, events, or routes. Identity-verified with secure document storage.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag"><span class="feature-dot"></span>Sessions</div>
+      <h3>Sessions & Safe Zones</h3>
+      <p>Track your active sessions, safe zones, and historic incidents to understand how your environment truly behaves over time.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag"><span class="feature-dot"></span>Engine</div>
+      <h3>Supabase Real-Time Core</h3>
+      <p>Live map updates, lookouts, and alerts backed by a hardened PostgreSQL schema and RLS everywhere.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-tag"><span class="feature-dot"></span>Gamification</div>
+      <h3>XP for Protecting People</h3>
+      <p>Earn XP, climb leaderboards, and unlock status by reporting accurately, verifying quickly, and staying engaged.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: IMPACT -->
+<section class="section">
+  <h2>TRUSTED BY PEOPLE WHO CAN’T AFFORD GUESSWORK</h2>
+  <p>
+    From nightlife districts and private security teams to event producers and hyper-aware locals,
+    CITE CONTROL is built for operators who treat safety like a mission, not a checkbox.
+  </p>
+
+  <div class="testimonials">
+    <div class="testimonial">
+      “The first safety app that actually understands how a city breathes. Those pulsing radiuses tell you everything instantly.”
+    </div>
+    <div class="testimonial">
+      “We used CITE CONTROL for a downtown event weekend. The crowd-sourced alerts and Lookout sessions kept our whole perimeter tight.”
+    </div>
+    <div class="testimonial">
+      “Feels like a tactical overlay on the real world. Once you see your city this way, you can’t go back.”
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><a href="privacy.html">Privacy Policy</a> • <a href="terms.html">Terms of Service</a></p>
+  <p style="margin-top:10px;">© 2026 CITE CONTROL. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

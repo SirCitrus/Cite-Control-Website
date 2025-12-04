@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CITE CONTROL — Privacy Policy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <style>
+    :root {
+      --bg: #000;
+      --primary: #FF6200;
+      --primary-glow: #ff3000;
+      --text: #ffffff;
+      --text-soft: #bbbbbb;
+      --glass: rgba(25,25,25,0.7);
+      --blur: blur(16px);
+      --radius: 18px;
+      --border: 1px solid rgba(255,98,0,0.35);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #161616 0%, #000 55%, #000 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,98,0,0.04) 0,
+          rgba(255,98,0,0.04) 1px,
+          transparent 1px,
+          transparent 80px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,98,0,0.04) 0,
+          rgba(255,98,0,0.04) 1px,
+          transparent 1px,
+          transparent 80px
+        );
+      opacity: 0.8;
+      animation: grid-move 22s linear infinite;
+      z-index: -2;
+    }
+
+    .bg-halo {
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,98,0,0.45), transparent 60%);
+      filter: blur(25px);
+      top: -120px;
+      right: -60px;
+      opacity: 0.85;
+      mix-blend-mode: screen;
+      animation: halo-pulse 4s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes grid-move {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-80px,-80px); }
+    }
+
+    @keyframes halo-pulse {
+      from { transform: scale(0.95); opacity: 0.7; }
+      to   { transform: scale(1.05); opacity: 1; }
+    }
+
+    header {
+      padding: 24px 32px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 1rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 600;
+      text-shadow: 0 0 16px rgba(255,98,0,0.9);
+    }
+
+    nav a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 40px auto 60px;
+      padding: 0 24px 60px;
+    }
+
+    .card {
+      background: var(--glass);
+      border-radius: 26px;
+      padding: 32px 26px 40px;
+      border: 1px solid rgba(255,98,0,0.35);
+      backdrop-filter: var(--blur);
+      box-shadow: 0 0 32px rgba(0,0,0,0.8), 0 0 40px rgba(255,98,0,0.25);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,98,0,0.5);
+      background: rgba(5,5,5,0.96);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #18ff6d;
+      box-shadow: 0 0 12px #18ff6d;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.96); opacity: 0.55; }
+      50% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(0.96); opacity: 0.55; }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 6px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--primary);
+      text-shadow: 0 0 24px var(--primary-glow);
+    }
+
+    .subtitle {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 26px 0 10px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      border-top: 1px solid rgba(255,98,0,0.35);
+      padding-top: 18px;
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      margin: 18px 0 6px;
+      color: #fff;
+    }
+
+    p, li {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--text-soft);
+    }
+
+    ul {
+      margin: 6px 0 14px 18px;
+      padding-left: 10px;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding-bottom: 24px;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 720px) {
+      .card { padding: 26px 20px 32px; }
+      h1 { font-size: 2rem; }
+      header { padding-inline: 18px; }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      nav a { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-halo"></div>
+
+<header>
+  <div class="logo">CITE&nbsp;CONTROL</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="privacy.html" style="color:var(--primary);">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</header>
+
+<div class="wrapper">
+  <div class="card">
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      PRIVACY POLICY
+    </div>
+
+    <h1>Privacy & Data Protection</h1>
+    <div class="subtitle">How CITE CONTROL collects, uses, and protects your information.</div>
+    <div class="meta">Last updated: November 26, 2026</div>
+
+    <h2>What We Collect</h2>
+    <h3>Account Information</h3>
+    <p>We collect basic account details so you can sign in and use the app securely:</p>
+    <ul>
+      <li>Email address or phone number (for login and recovery)</li>
+      <li>Profile details such as name, photo (optional), and safety preferences</li>
+    </ul>
+
+    <h3>Location Data</h3>
+    <p>Location is the core of how CITE CONTROL works, but we keep it controlled:</p>
+    <ul>
+      <li>GPS location when you mark a safe zone, request a Lookout, or use location-based safety features</li>
+      <li>Zone information for safe areas you create or interact with</li>
+    </ul>
+
+    <h3>Session & Interaction Data</h3>
+    <ul>
+      <li>Session metadata such as duration, pricing, and completion status</li>
+      <li>Chat messages exchanged during active Lookout sessions</li>
+      <li>Safety reports, incident details, and feedback you share</li>
+    </ul>
+
+    <h2>What We Never Do</h2>
+    <p>Some things are completely off-limits:</p>
+    <ul>
+      <li>We never sell your data to third parties.</li>
+      <li>We do not continuously track your location in the background.</li>
+      <li>We do not expose your exact GPS coordinates to other users or Lookouts.</li>
+      <li>We avoid storing unnecessary or unrelated data.</li>
+    </ul>
+
+    <h2>What Lookouts Can See</h2>
+    <p>When you book a Lookout, they only see limited information needed to protect you effectively:</p>
+    <ul>
+      <li>Your first name only — not your full identity.</li>
+      <li>An approximate area around your position, not your precise GPS pin.</li>
+      <li>Chat messages during the active session only.</li>
+      <li>Session timing such as start and end times.</li>
+    </ul>
+    <p>Lookouts do <strong>not</strong> see your exact coordinates, personal contact details, or your entire location history.</p>
+
+    <h2>Data Deletion</h2>
+    <h3>Delete Your Account</h3>
+    <p>You can request deletion at any time from <em>Settings &gt; Privacy &gt; Delete Account</em>.</p>
+    <ul>
+      <li>Your account and related data are permanently deleted within 24 hours.</li>
+      <li>Once deleted, your data cannot be recovered.</li>
+    </ul>
+
+    <h3>What Gets Deleted</h3>
+    <ul>
+      <li>Profile information and preferences</li>
+      <li>Location data and safe zones</li>
+      <li>Session history and chat logs</li>
+      <li>Stored payment and subscription details (except records we must retain for legal or financial compliance)</li>
+    </ul>
+
+    <h2>Security Measures</h2>
+    <ul>
+      <li>End-to-end encryption for communication where applicable</li>
+      <li>Secure storage using industry-standard practices</li>
+      <li>Strict internal access controls for authorized personnel only</li>
+      <li>Regular security reviews and best-practice updates</li>
+    </ul>
+
+    <h2>Your Controls</h2>
+    <ul>
+      <li>You can revoke location permissions at any time in your device settings.</li>
+      <li>You decide what profile information to share.</li>
+      <li>You can manage, export, or delete your data where supported.</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>CITE CONTROL integrates with trusted platforms to provide parts of the service:</p>
+    <ul>
+      <li>Supabase for secure database and authentication</li>
+      <li>Stripe for payment processing (we do not store full card numbers locally)</li>
+      <li>Google Maps for mapping and location visualization</li>
+      <li>Expo as the application framework</li>
+    </ul>
+    <p>Each provider has its own privacy practices, which apply when you interact with their services through our app.</p>
+
+    <h2>International Users</h2>
+    <p>Your data may be processed in different regions where our services and infrastructure operate, but we maintain consistent protection standards and aim to comply with local regulations where applicable.</p>
+
+    <h2>Your Rights & Contact</h2>
+    <p>You may have rights to:</p>
+    <ul>
+      <li>Request access to the data we hold about you</li>
+      <li>Request correction of inaccurate information</li>
+      <li>Request deletion of your data</li>
+      <li>Withdraw consent for specific processing where applicable</li>
+    </ul>
+    <p>If you have questions or requests about privacy, contact us:</p>
+    <ul>
+      <li><strong>Privacy:</strong> <a href="mailto:privacy@citecontrol.app">privacy@citecontrol.app</a></li>
+      <li><strong>Support:</strong> <a href="mailto:support@citecontrol.app">support@citecontrol.app</a></li>
+    </ul>
+
+    <h2>Policy Updates</h2>
+    <p>We may update this Privacy Policy as the product evolves. For significant changes, we’ll notify you and provide a clear effective date. Continued use of CITE CONTROL after changes go live means you accept the updated terms.</p>
+  </div>
+</div>
+
+<footer>
+  <p><a href="index.html">Home</a> • <a href="terms.html">Terms of Service</a></p>
+  <p style="margin-top:10px;">© 2026 CITE CONTROL. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

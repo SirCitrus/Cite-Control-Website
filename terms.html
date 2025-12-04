@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CITE CONTROL — Terms of Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <style>
+    :root {
+      --bg: #000;
+      --primary: #FF6200;
+      --primary-glow: #ff3000;
+      --text: #ffffff;
+      --text-soft: #bbbbbb;
+      --glass: rgba(25,25,25,0.7);
+      --blur: blur(16px);
+      --radius: 18px;
+      --border: 1px solid rgba(255,98,0,0.35);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #181818 0%, #000 55%, #000 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,98,0,0.04) 0,
+          rgba(255,98,0,0.04) 1px,
+          transparent 1px,
+          transparent 80px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,98,0,0.04) 0,
+          rgba(255,98,0,0.04) 1px,
+          transparent 1px,
+          transparent 80px
+        );
+      opacity: 0.8;
+      animation: grid-move 22s linear infinite;
+      z-index: -2;
+    }
+
+    .bg-halo {
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,98,0,0.45), transparent 60%);
+      filter: blur(25px);
+      top: -120px;
+      right: -60px;
+      opacity: 0.85;
+      mix-blend-mode: screen;
+      animation: halo-pulse 4s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes grid-move {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(-80px,-80px); }
+    }
+
+    @keyframes halo-pulse {
+      from { transform: scale(0.95); opacity: 0.7; }
+      to   { transform: scale(1.05); opacity: 1; }
+    }
+
+    header {
+      padding: 24px 32px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 1rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 600;
+      text-shadow: 0 0 16px rgba(255,98,0,0.9);
+    }
+
+    nav a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 40px auto 60px;
+      padding: 0 24px 60px;
+    }
+
+    .card {
+      background: var(--glass);
+      border-radius: 26px;
+      padding: 32px 26px 40px;
+      border: 1px solid rgba(255,98,0,0.35);
+      backdrop-filter: var(--blur);
+      box-shadow: 0 0 32px rgba(0,0,0,0.8), 0 0 40px rgba(255,98,0,0.25);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,98,0,0.5);
+      background: rgba(5,5,5,0.96);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #FF6200;
+      box-shadow: 0 0 12px #FF6200;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.96); opacity: 0.55; }
+      50% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(0.96); opacity: 0.55; }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 6px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--primary);
+      text-shadow: 0 0 24px var(--primary-glow);
+    }
+
+    .subtitle {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 26px 0 10px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      border-top: 1px solid rgba(255,98,0,0.35);
+      padding-top: 18px;
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      margin: 18px 0 6px;
+      color: #fff;
+    }
+
+    p, li {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--text-soft);
+    }
+
+    ul {
+      margin: 6px 0 14px 18px;
+      padding-left: 10px;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding-bottom: 24px;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 720px) {
+      .card { padding: 26px 20px 32px; }
+      h1 { font-size: 2rem; }
+      header { padding-inline: 18px; }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      nav a { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-halo"></div>
+
+<header>
+  <div class="logo">CITE&nbsp;CONTROL</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html" style="color:var(--primary);">Terms</a>
+  </nav>
+</header>
+
+<div class="wrapper">
+  <div class="card">
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      TERMS OF SERVICE
+    </div>
+
+    <h1>Rules of Engagement</h1>
+    <div class="subtitle">The agreement between you and CITE CONTROL when you use the platform.</div>
+    <div class="meta">Last updated: November 26, 2026</div>
+
+    <h2>Service Agreement</h2>
+    <p>By downloading, accessing, or using CITE CONTROL, you agree to these Terms of Service and our Privacy Policy. If you do not agree, do not use the app.</p>
+
+    <h2>Premium Subscription</h2>
+    <h3>Billing & Renewal</h3>
+    <ul>
+      <li>Premium subscriptions are billed monthly and automatically renew until canceled.</li>
+      <li>You can cancel at any time through your account or platform subscription settings.</li>
+      <li>Cancellations take effect at the end of the current billing period; partial months are not refunded.</li>
+      <li>If pricing changes, we will notify you at least 30 days in advance.</li>
+    </ul>
+
+    <h3>Premium Features</h3>
+    <ul>
+      <li>Priority access to Lookouts</li>
+      <li>Extended and enhanced session options</li>
+      <li>Advanced safety and map features, including expanded radius views</li>
+    </ul>
+
+    <h2>Lookout Services</h2>
+    <h3>Revenue Sharing</h3>
+    <ul>
+      <li>Lookouts retain 82% of session revenue.</li>
+      <li>CITE CONTROL retains 18% as a platform fee.</li>
+      <li>Payments are processed securely through Stripe.</li>
+      <li>Payouts to Lookouts are typically made weekly for completed sessions.</li>
+    </ul>
+
+    <h3>Service Standards</h3>
+    <p>Lookouts are expected to:</p>
+    <ul>
+      <li>Provide professional safety monitoring and support.</li>
+      <li>Respond promptly to active sessions and communications.</li>
+      <li>Maintain accurate online/offline status.</li>
+      <li>Follow all safety protocols, laws, and community guidelines.</li>
+    </ul>
+
+    <h2>Prohibited Conduct</h2>
+    <h3>Immediate Ban Offenses</h3>
+    <ul>
+      <li>Abusive behavior or harassment toward any user or Lookout.</li>
+      <li>Hate speech or discriminatory language in any form.</li>
+      <li>Stalking, threats, or any form of intimidation.</li>
+      <li>Submitting fake or malicious emergency reports.</li>
+    </ul>
+
+    <h3>Additional Violations</h3>
+    <ul>
+      <li>Using CITE CONTROL to commit illegal activities.</li>
+      <li>Sharing or selling account access.</li>
+      <li>Circumventing safety features or technical protections.</li>
+      <li>Spamming, flooding, or abusing communication channels.</li>
+    </ul>
+
+    <h2>Safety & Security</h2>
+    <h3>User Responsibilities</h3>
+    <ul>
+      <li>Provide accurate information when requesting help or reporting incidents.</li>
+      <li>Use the app for genuine safety-related purposes only.</li>
+      <li>Respect the privacy and safety of others.</li>
+      <li>Follow all laws and regulations in your location.</li>
+    </ul>
+
+    <h3>Platform Responsibilities</h3>
+    <ul>
+      <li>Operate and maintain the service with reasonable care and uptime goals.</li>
+      <li>Protect user data in line with the Privacy Policy.</li>
+      <li>Investigate credible reports of abuse and take action when needed.</li>
+      <li>Provide support channels for issues related to safety and usage.</li>
+    </ul>
+
+    <h2>Service Availability</h2>
+    <ul>
+      <li>We aim for high uptime but cannot guarantee uninterrupted service.</li>
+      <li>Planned maintenance or upgrades may temporarily limit access.</li>
+      <li>Service depends on internet, GPS, and third-party infrastructure.</li>
+      <li>CITE CONTROL is a supplemental tool and does not replace calling emergency services such as 911.</li>
+    </ul>
+
+    <h3>Geographic Availability</h3>
+    <ul>
+      <li>Some features may be limited or unavailable in certain regions.</li>
+      <li>Lookout availability depends on local participation and coverage.</li>
+    </ul>
+
+    <h2>Account Management</h2>
+    <h3>Account Requirements</h3>
+    <ul>
+      <li>You must be at least 18 years old to create an account.</li>
+      <li>Each individual may maintain only one account.</li>
+      <li>You must provide accurate and current information.</li>
+      <li>A valid payment method is required for premium features.</li>
+    </ul>
+
+    <h3>Account Termination</h3>
+    <ul>
+      <li>You may delete your account at any time in the app.</li>
+      <li>We may suspend or terminate accounts that violate these Terms or applicable laws.</li>
+      <li>Deleted accounts are typically removed from our active systems within 24 hours, subject to legal and operational requirements.</li>
+    </ul>
+
+    <h2>Payments & Refunds</h2>
+    <h3>Payment Terms</h3>
+    <ul>
+      <li>All charges are processed in the supported currency for your region (often USD).</li>
+      <li>Applicable taxes may be added based on your jurisdiction.</li>
+      <li>Failed or disputed payments may result in limited or suspended access.</li>
+    </ul>
+
+    <h3>Refund Policy</h3>
+    <ul>
+      <li>Subscriptions are not typically refunded for partial billing periods.</li>
+      <li>Refunds for Lookout sessions may be considered for cancellations or service issues on a case-by-case basis.</li>
+      <li>For payment disputes, contact support so we can review and assist.</li>
+    </ul>
+
+    <h2>Intellectual Property</h2>
+    <ul>
+      <li>CITE CONTROL owns the app design, branding, technology, and proprietary systems.</li>
+      <li>You retain ownership of your content but grant us a license to use it for operating and improving the service.</li>
+      <li>You may not copy, reverse engineer, or resell any part of the platform.</li>
+    </ul>
+
+    <h2>Liability & Disclaimers</h2>
+    <ul>
+      <li>CITE CONTROL does not guarantee specific outcomes or protection results.</li>
+      <li>We are not responsible for the actions or omissions of individual users or Lookouts.</li>
+      <li>To the fullest extent allowed by law, our liability is limited to the amount you have paid for the service over a reasonable period.</li>
+      <li>We are not liable for indirect, incidental, or consequential damages.</li>
+    </ul>
+
+    <h2>Dispute Resolution</h2>
+    <ul>
+      <li>Start by contacting <a href="mailto:support@citecontrol.app">support@citecontrol.app</a> so we can attempt to resolve issues informally.</li>
+      <li>If unresolved, disputes may be handled through mediation or binding arbitration, depending on your jurisdiction.</li>
+      <li>The governing law is generally the law of the region in which CITE CONTROL operates or is registered.</li>
+    </ul>
+
+    <h2>Updates to These Terms</h2>
+    <p>We may update these Terms as CITE CONTROL evolves. For significant changes, we’ll provide notice (for example, by email or in-app). Continued use of the app after changes become effective constitutes your acceptance of the updated Terms.</p>
+
+    <h2>Contact</h2>
+    <ul>
+      <li><strong>General Support:</strong> <a href="mailto:support@citecontrol.app">support@citecontrol.app</a></li>
+      <li><strong>Legal Questions:</strong> <a href="mailto:legal@citecontrol.app">legal@citecontrol.app</a></li>
+      <li><strong>Lookout Support:</strong> <a href="mailto:lookouts@citecontrol.app">lookouts@citecontrol.app</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <p><a href="privacy.html">Privacy Policy</a> • <a href="index.html">Home</a></p>
+  <p style="margin-top:10px;">© 2026 CITE CONTROL. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
