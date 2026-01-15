@@ -514,17 +514,179 @@
       }
       nav a { margin-left: 0; }
     }
+
+    /* FAQ STYLES */
+
+    .faq-container {
+      margin-top: 40px;
+    }
+
+    .faq-section {
+      margin-bottom: 50px;
+    }
+
+    .faq-section-title {
+      font-size: 1.4rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 20px;
+      display: inline-block;
+      border-bottom: 2px solid rgba(255,98,0,0.3);
+      padding-bottom: 8px;
+    }
+
+    .faq-item {
+      margin-bottom: 16px;
+      background: var(--glass);
+      border: var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      backdrop-filter: var(--blur);
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(255,98,0,0.4);
+      box-shadow: 0 0 20px rgba(255,98,0,0.1);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 18px 22px;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.25s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--primary);
+    }
+
+    .faq-question span:first-child {
+      flex: 1;
+      line-height: 1.5;
+    }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      color: var(--primary);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .faq-answer.open {
+      max-height: 2000px;
+      padding: 0 22px 20px;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-answer p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .faq-answer p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-answer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .faq-answer a:hover {
+      text-decoration: underline;
+    }
+
+    .faq-answer strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .faq-section-title {
+        font-size: 1.2rem;
+      }
+
+      .faq-question {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+      }
+
+      .faq-answer {
+        font-size: 0.9rem;
+      }
+
+      .faq-answer.open {
+        padding: 0 16px 16px;
+      }
+
+      .faq-icon {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .section {
+        padding: 60px 20px 30px;
+      }
+
+      .faq-section-title {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+      }
+
+      .faq-question {
+        padding: 12px 14px;
+        gap: 12px;
+      }
+
+      .faq-answer.open {
+        padding: 0 14px 14px;
+      }
+    }
   </style>
 </head>
 <body>
+
+<script>
+  function toggleFAQ(button) {
+    const answer = button.nextElementSibling;
+    button.classList.toggle('active');
+    answer.classList.toggle('open');
+  }
+</script>
 
 <header>
   <div class="logo">CITE&nbsp;CONTROL</div>
   <nav>
     <a href="index.html">Home</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
+    <a href="pricing.html">Pricing</a>
     <a href="support.html" style="color:var(--primary);">Support</a>
+    <a href="privacy.html">Privacy</a>
   </nav>
 </header>
 
@@ -538,9 +700,316 @@
   </p>
 
   <h3>Frequently Asked Questions</h3>
-  <p>
-    (Placeholder for FAQ content)
-  </p>
+
+  <!-- FAQ ACCORDION CONTAINER -->
+  <div class="faq-container">
+
+    <!-- USER TYPES SECTION -->
+    <div class="faq-section">
+      <h4 class="faq-section-title">USER TYPES</h4>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What's the difference between a regular User and a Lookout?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Users</strong> are community members who report and verify incidents on the safety map. They earn XP for reports, verifications, and check-ins, and can book Lookouts for personal protection.</p>
+          <p><strong>Lookouts</strong> are vetted safety professionals who monitor areas and respond to incident requests. They offer specialized services like bystander support, physical threat assessment, and intoxication monitoring. Lookouts earn income through bookings and gain recognition through the leaderboard system.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do Agencies and Event Organizers use Cite Control?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Agencies</strong> (security firms, municipalities) subscribe to Cite Control for premium features including advanced alert radius visibility, priority incident notices, historical heatmap data, and aggregated safety analytics for their jurisdictions.</p>
+          <p><strong>Event Organizers</strong> use Cite Control to monitor safety during large gatherings. They can access live incident maps, coordinate with professional Lookouts, and track crowd zones in real-time.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do I become a Lookout?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Apply through the Cite Control app to become a verified Lookout. To verify your professional credentials, you'll need to:</p>
+          <ul style="margin: 12px 0 12px 20px; color: var(--text-soft);">
+            <li>Upload your ID and professional verification documents</li>
+            <li>Complete a vulnerable sector check (background verification)</li>
+            <li>Verify your professional status: Police, Paramedic/Ambulance, Firefighter, Security Professional, Veteran, or other credentials</li>
+          </ul>
+          <p>Once approved by our vetting team, select your specializations (based on your credentials and training), set your availability, and start accepting bookings to earn income.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MAP & SCREENS SECTION -->
+    <div class="faq-section">
+      <h4 class="faq-section-title">MAP & SCREENS</h4>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What's the difference between MapScreen and CommunityScreen?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>MapScreen</strong> displays real-time incidents and resources on a live map. You'll see crisis alerts, Lookout availability, active sessions, and public service presence. Use independent toggles to filter what you want to see (alerts, Lookouts, your sessions, or service presence).</p>
+          <p><strong>CommunityScreen</strong> shows incident details, community discussions, and user discovery. Toggle between NOW mode (current incidents) and HISTORY mode (past incidents) to explore incident details, verify reports, and connect with other community members.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do I report a crisis or incident?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Use the unified reporting modal available from both MapScreen and CommunityScreen. Choose from 11 verifiable incident types:</p>
+          <p><strong>Crisis Types (8 total):</strong> 5 prolonged crises (ongoing situations) and 3 immediate crises (urgent situations).</p>
+          <p><strong>Lookout Requests (3 total):</strong> Request specific Lookout support for bystander help, physical threat response, or intoxication assistance.</p>
+          <p>The system uses smart duplicate detection—if a similar alert exists within 100m and 30 minutes, you'll be invited to verify instead of creating a duplicate.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What happens when multiple people verify an incident?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Community verifications strengthen incident credibility. When an alert receives 3+ verifications, it's automatically marked as VERIFIED. Verified alerts remain visible on the map for up to 60 minutes. You earn XP for both reporting and verifying incidents, plus bonus XP for verified reports.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What's Public Service Presence?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Public Service Presence allows you to report the location of police, ambulance, firefighters, or security services on the map. This helps the community know what resources are already responding to an incident. These reports are visible for 30 minutes and can be verified by others.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ZONES & SAFETY SECTION -->
+    <div class="faq-section">
+      <h4 class="faq-section-title">ZONES & SAFETY</h4>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What are Safe Zones?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Safe Zones are user-defined areas you mark on the map as places where you feel secure. Create custom Safe Zones around your home, workplace, or frequented locations. These appear on your personal map view to help you stay aware of your surroundings.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What are Crowd Zones?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Crowd Zones are automatically generated by the system when high concentrations of people gather. They're created when 5+ community members check in to the same area OR when 3+ people are present with a Lookout. Crowd Zones help you identify where people are congregating and provide context for incident reports.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LOOKOUTS & BOOKING SECTION -->
+    <div class="faq-section">
+      <h4 class="faq-section-title">LOOKOUTS & BOOKING</h4>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do I book a Lookout?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Book a Lookout directly from the MapScreen or through the Community Hub. Select your desired specialization (bystander support, physical threat assessment, or intoxication monitoring) and choose your session duration: 15, 30, 45, or 60 minutes. Premium members have higher booking limits than free users.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What does each Lookout specialization do?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Bystander Support:</strong> Lookouts help you stay safe in crowded or unfamiliar environments by providing companionship and awareness.</p>
+          <p><strong>Physical Threat Assessment:</strong> Specialized Lookouts trained to identify and respond to physical dangers and de-escalate threatening situations.</p>
+          <p><strong>Intoxication Monitoring:</strong> Lookouts trained to assist if you've consumed substances, ensuring your safety and well-being.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How are Lookout bookings secured?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>All Lookout bookings and payments are processed securely through Stripe integration. Your payment information is encrypted and stored securely. Only verified Lookouts can accept bookings, and all interactions are logged for safety and accountability.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GAMIFICATION SECTION -->
+    <div class="faq-section">
+      <h4 class="faq-section-title">GAMIFICATION & REWARDS</h4>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do I earn XP and what are levels?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Earn XP by reporting incidents, verifying community reports, and participating in sessions. Your Level is calculated as: Level = floor(XP / 100) + 1. As your XP increases, your level grows, unlocking greater impact in the community and higher recognition on leaderboards.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What are leaderboards and badges?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Leaderboards rank community members and Lookouts by activity and XP. Badges recognize specific achievements like consistent reporting, high verification rates, and daily participation streaks. Both leaderboards and badges encourage community engagement and recognize top contributors.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What are daily streaks?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Daily streaks track consecutive days you participate in Cite Control—reporting, verifying, or checking in. Maintain your streak to unlock bonus XP and recognition badges, encouraging regular community engagement.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PRIVACY & SECURITY SECTION -->
+    <div class="faq-section">
+      <h4 class="faq-section-title">PRIVACY & SECURITY</h4>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is my location data private?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Your location is displayed on the map while you're actively participating in a session or checking in. Safe Zones and personal alerts are visible only to you. All location data is encrypted and protected by our Row Level Security policies. When you end a session, your location presence is removed from the map. See our <a href="privacy.html">Privacy Policy</a> for complete details.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Who can see my reported incidents?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Your incident reports are visible on the public map to help the community respond to crises. Your identity as the reporter is visible to other community members. Reports include location, type, description, and verification count but no unnecessary personal details. Detailed verification documentation is stored securely and accessible only to relevant parties.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What data does Cite Control collect?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We collect your profile information, location data during sessions, incident reports, verifications, and Lookout booking history. We use this data to operate the platform, prevent fraud, improve safety features, and (for agencies and premium subscribers only) provide anonymized regional safety analytics. See our <a href="privacy.html">Privacy Policy</a> for full details on data usage and retention.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ACCOUNT & SUBSCRIPTION SECTION -->
+    <div class="faq-section">
+      <h4 class="faq-section-title">ACCOUNT & SUBSCRIPTION</h4>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is there a free tier?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! Cite Control's core features are free: report and verify incidents, check in to sessions, view the community map, earn XP, and participate in leaderboards. Premium tiers unlock advanced features like higher Lookout booking limits, extended alert visibility radius, priority incident notifications, and historical heatmap data.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What's included in Premium and Agency plans?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Premium:</strong> Higher Lookout booking limits, priority incident notifications, advanced alert radius visibility, and historical heatmap features for personal safety planning.</p>
+          <p><strong>Agency/Enterprise:</strong> Multi-user access, advanced data analytics, custom alert zones, location package licensing, and direct support. Perfect for security firms, event organizers, and municipalities.</p>
+          <p>For detailed pricing, contact <a href="mailto:support@citecontrol.com">support@citecontrol.com</a>.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can I change my subscription plan?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. You can upgrade, downgrade, or cancel your subscription anytime through your Account settings. Changes take effect immediately. If you downgrade, your benefits will adjust at the start of your next billing cycle.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GENERAL SUPPORT SECTION -->
+    <div class="faq-section">
+      <h4 class="faq-section-title">GENERAL SUPPORT</h4>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Where can I report a bug or request a feature?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Email us at <a href="mailto:support@citecontrol.com">support@citecontrol.com</a> with details about the bug (including screenshots if possible) or your feature request. We review all feedback and prioritize improvements based on community needs. We aim to respond to all inquiries within 24-48 business hours.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What should I do if I see a false or misleading incident report?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>If you see a false or misleading report, you can flag it through the Community Hub. Our moderation team reviews flagged reports and takes appropriate action, including removing verified false reports or warning users who repeatedly post false information. The community's verification system helps surface accurate, credible information.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is Cite Control available in my country/region?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Cite Control is currently available in select regions. Check your app store or contact <a href="mailto:support@citecontrol.com">support@citecontrol.com</a> to confirm availability in your area. We're actively expanding to more regions.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- END FAQ CONTAINER -->
 
   <h3>Contact Us</h3>
   <p>

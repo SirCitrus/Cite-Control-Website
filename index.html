@@ -497,8 +497,201 @@
       color: var(--primary);
     }
 
+    /* BETA SIGNUP STYLES */
+
+    .beta-signup-section {
+      background: linear-gradient(135deg, rgba(255,98,0,0.1), rgba(0,0,0,0.6));
+      border: 1px solid rgba(255,98,0,0.3);
+      border-radius: 18px;
+      padding: 50px 40px;
+      margin-top: 60px;
+      backdrop-filter: blur(16px);
+      text-align: center;
+    }
+
+    .beta-signup-section h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .beta-signup-section p {
+      color: var(--text-soft);
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .beta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .beta-input {
+      padding: 14px 18px;
+      background: rgba(10,10,10,0.8);
+      border: 1px solid rgba(255,98,0,0.3);
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+    }
+
+    .beta-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(10,10,10,0.95);
+      box-shadow: 0 0 20px rgba(255,98,0,0.2);
+    }
+
+    .beta-input::placeholder {
+      color: rgba(255,255,255,0.4);
+    }
+
+    .beta-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .beta-select {
+      padding: 14px 18px;
+      background: rgba(10,10,10,0.8);
+      border: 1px solid rgba(255,98,0,0.3);
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .beta-select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(10,10,10,0.95);
+      box-shadow: 0 0 20px rgba(255,98,0,0.2);
+    }
+
+    .beta-select option {
+      background: #000;
+      color: var(--text);
+    }
+
+    .beta-submit {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #ff7a1a, #ff3c00);
+      color: #000;
+      border: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .beta-submit:hover {
+      box-shadow: 0 0 30px rgba(255,98,0,0.7);
+      transform: translateY(-2px);
+    }
+
+    .beta-form-note {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 8px;
+    }
+
+    /* USER TYPE CARDS */
+
+    .user-types-section {
+      margin-top: 80px;
+      padding-top: 60px;
+      border-top: 1px solid rgba(255,98,0,0.2);
+    }
+
+    .user-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .user-type-card {
+      background: rgba(10,10,10,0.6);
+      border: 1px solid rgba(255,98,0,0.25);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .user-type-card:hover {
+      border-color: rgba(255,98,0,0.4);
+      box-shadow: 0 0 25px rgba(255,98,0,0.15);
+    }
+
+    .user-type-icon {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+    }
+
+    .user-type-card h4 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .user-type-card p {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .user-type-features {
+      list-style: none;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .user-type-features li {
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .user-type-features li::before {
+      content: "▸";
+      color: var(--primary);
+      font-weight: bold;
+    }
+
     @media (max-width: 720px) {
       header { padding-inline: 18px; }
+    }
+
+    @media (max-width: 768px) {
+      .beta-form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .beta-signup-section {
+        padding: 40px 20px;
+      }
+
+      .user-types-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 520px) {
@@ -513,6 +706,27 @@
         gap: 12px;
       }
       nav a { margin-left: 0; }
+
+      .beta-signup-section {
+        padding: 30px 16px;
+        margin-top: 40px;
+      }
+
+      .beta-signup-section h3 {
+        font-size: 1.4rem;
+      }
+
+      .beta-signup-section p {
+        font-size: 0.95rem;
+      }
+
+      .user-types-grid {
+        gap: 16px;
+      }
+
+      .user-type-card {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -522,9 +736,9 @@
   <div class="logo">CITE&nbsp;CONTROL</div>
   <nav>
     <a href="index.html" style="color:var(--primary);">Home</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
+    <a href="pricing.html">Pricing</a>
     <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy</a>
   </nav>
 </header>
 
@@ -626,7 +840,86 @@
   </div>
 </section>
 
-<!-- SECTION 2: IMPACT -->
+<!-- SECTION 2: USER TYPES -->
+<section class="section">
+  <h2>BUILT FOR EVERYONE WHO CARES ABOUT SAFETY</h2>
+  <p>
+    Whether you're a community member staying vigilant, a security professional earning income, or an organization managing safety at scale,
+    Cite Control has a role for you.
+  </p>
+
+  <div class="user-types-grid">
+    <div class="user-type-card">
+      <div class="user-type-icon">👥</div>
+      <h4>Community Users</h4>
+      <p>Report and verify incidents in real-time. Stay informed about your surroundings.</p>
+      <ul class="user-type-features">
+        <li>Report 11 crisis types</li>
+        <li>Verify community alerts</li>
+        <li>Book Lookouts for safety</li>
+        <li>Earn XP & climb leaderboards</li>
+        <li>Access SafeZones</li>
+      </ul>
+    </div>
+
+    <div class="user-type-card">
+      <div class="user-type-icon">🛡️</div>
+      <h4>Lookouts</h4>
+      <p>Safety professionals who monitor areas and earn income protecting your community.</p>
+      <ul class="user-type-features">
+        <li>Get booked for specialized support</li>
+        <li>Bystander, threat, or intoxication specializations</li>
+        <li>Earn recurring income</li>
+        <li>Build reputation & credentials</li>
+        <li>Access premium leaderboards</li>
+      </ul>
+    </div>
+
+    <div class="user-type-card">
+      <div class="user-type-icon">🏛️</div>
+      <h4>Agencies & Organizations</h4>
+      <p>Municipalities, event organizers, and security firms managing safety at scale.</p>
+      <ul class="user-type-features">
+        <li>Real-time incident analytics</li>
+        <li>Multi-user team access</li>
+        <li>Custom alert zones</li>
+        <li>Historical heatmap data</li>
+        <li>Priority support & SLA</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: BETA SIGNUP -->
+<section class="section">
+  <div class="beta-signup-section">
+    <h3>Join the Beta</h3>
+    <p>
+      Early access to new features, direct influence on product development, and exclusive beta perks.
+      We're building this with you.
+    </p>
+
+    <form class="beta-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="email" class="beta-input" name="email" placeholder="your@email.com" required>
+
+      <div class="beta-form-row">
+        <input type="text" class="beta-input" name="name" placeholder="Your Name" required>
+        <select class="beta-select" name="user_type" required>
+          <option value="">I'm a...</option>
+          <option value="community">Community Member</option>
+          <option value="lookout">Lookout Professional</option>
+          <option value="agency">Agency / Organization</option>
+          <option value="event">Event Organizer</option>
+        </select>
+      </div>
+
+      <button type="submit" class="beta-submit">Get Early Access</button>
+      <div class="beta-form-note">No spam. We'll update you when new features launch.</div>
+    </form>
+  </div>
+</section>
+
+<!-- SECTION 4: TESTIMONIALS -->
 <section class="section">
   <h2>TRUSTED BY PEOPLE WHO CAN'T AFFORD GUESSWORK</h2>
   <p>
@@ -636,13 +929,13 @@
 
   <div class="testimonials">
     <div class="testimonial">
-      “The first safety app that actually understands how a city breathes. Those pulsing radiuses tell you everything instantly.”
+      "The first safety app that actually understands how a city breathes. Those pulsing radiuses tell you everything instantly."
     </div>
     <div class="testimonial">
-      “We used CITE CONTROL for a downtown event weekend. The crowd-sourced alerts and Lookout sessions kept our whole perimeter tight.”
+      "We used CITE CONTROL for a downtown event weekend. The crowd-sourced alerts and Lookout sessions kept our whole perimeter tight."
     </div>
     <div class="testimonial">
-      “Feels like a tactical overlay on the real world. Once you see your city this way, you can't go back.”
+      "Feels like a tactical overlay on the real world. Once you see your city this way, you can't go back."
     </div>
   </div>
 </section>
